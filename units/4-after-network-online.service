@@ -1,0 +1,12 @@
+[Unit]
+Description=Run only after the network is online
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/echo "Network is online; running job now."
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

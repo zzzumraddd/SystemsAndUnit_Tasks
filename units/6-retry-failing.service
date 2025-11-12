@@ -1,0 +1,14 @@
+[Unit]
+Description=Always fails via divide-by-zero; retry 3 times then stop
+StartLimitIntervalSec=30
+StartLimitBurst=4
+
+[Service]
+Type=oneshot
+Environment=Var=1
+ExecStart=/usr/bin/env bash -lc 'echo $((Var/0))'
+Restart=on-failure
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

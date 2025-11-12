@@ -1,0 +1,12 @@
+[Unit]
+Description=Back up old /tmp/my.log, append new text, then simulate email
+
+[Service]
+Type=oneshot
+ExecStartPre=-/usr/bin/mv /tmp/my.log /tmp/my.log.bak
+ExecStart=/usr/bin/env bash -lc 'echo "Ish boshladi" >> /tmp/my.log'
+ExecStartPost=/usr/bin/echo "Email yuborildi"
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

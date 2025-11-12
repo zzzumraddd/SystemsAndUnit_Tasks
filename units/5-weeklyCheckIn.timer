@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs at 18:00 every Thursday
+
+[Timer]
+OnCalendar=*-*-4 18:00:00
+Persistent=true
+Unit=5-weeklyCheckIn.service
+
+[Install]
+WantedBy=timers.target

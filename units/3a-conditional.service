@@ -1,0 +1,11 @@
+[Unit]
+Description=Run only if /etc/maintenance.flag exists
+ConditionPathExists=/etc/maintenance.flag
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/echo "The file exists"
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
