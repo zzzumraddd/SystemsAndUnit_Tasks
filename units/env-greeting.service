@@ -4,9 +4,8 @@ Description=Read .env and append greeting to /tmp/envlog.txt
 [Service]
 Type=oneshot
 EnvironmentFile=/home/variables.env
-ExecStart=/usr/bin/env bash -lc 'printf "%s, %s!\n" "$GREETING" "$NAME" >> /tmp/envlog.txt'
+ExecStart=/bin/bash -c 'printf "%%s, %%s!\n" "$GREETING" "$NAME" >> /tmp/envlog.txt'
 Restart=no
 
 [Install]
 WantedBy=multi-user.target
-
