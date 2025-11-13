@@ -27,8 +27,8 @@ You can keep unit files in a local `units/` folder, then copy them to `/etc/syst
 
 ```
 units/
-  1-env-greeting.service
-  2-backup-append-email.service
+  env-greeting.service
+  backup-append-email.service
   3a-conditional.service
   3b-conditional-execcond.service
   4-after-network-online.service
@@ -72,7 +72,7 @@ Description=Read .env and append greeting to /tmp/envlog.txt
 [Service]
 Type=oneshot
 EnvironmentFile=/home/variables.env
-ExecStart=/usr/bin/env bash -lc 'printf "%s, %s!\n" "$GREETING" "$NAME" >> /tmp/envlog.txt'
+ExecStart=/bin/bash -c 'printf "%%s, %%s!\n" "$GREETING" "$NAME" >> /tmp/envlog.txt'
 Restart=no
 
 [Install]
