@@ -64,7 +64,7 @@ GREETING="Assalomu alaykum"
 NAME="Ismingiz"
 ```
 
-**Unit:** `1-env-greeting.service`
+**Unit:** `env-greeting.service`
 ```ini
 [Unit]
 Description=Read .env and append greeting to /tmp/envlog.txt
@@ -81,11 +81,11 @@ WantedBy=multi-user.target
 
 **Install & test:**
 ```bash
-sudo cp units/1-env-greeting.service /etc/systemd/system/
+sudo cp units/env-greeting.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable --now 1-env-greeting.service
+sudo systemctl enable --now env-greeting.service
 # Re-run anytime:
-sudo systemctl start 1-env-greeting.service
+sudo systemctl start env-greeting.service
 cat /tmp/envlog.txt
 ```
 
@@ -93,7 +93,7 @@ cat /tmp/envlog.txt
 
 ## 2) Backup old log, write new line, then “email” (simulated)
 
-**Unit:** `2-backup-append-email.service`
+**Unit:** `backup-append-email.service`
 ```ini
 [Unit]
 Description=Back up old /tmp/my.log, append new text, then simulate email
@@ -111,9 +111,9 @@ WantedBy=multi-user.target
 
 **Install & test:**
 ```bash
-sudo cp units/2-backup-append-email.service /etc/systemd/system/
+sudo cp units/backup-append-email.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable --now 2-backup-append-email.service
+sudo systemctl enable --now backup-append-email.service
 cat /tmp/my.log
 ls -l /tmp/my.log*
 ```
